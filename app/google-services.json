@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "337923708532",
+    "firebase_url": "https://mysavedrive-75933.firebaseio.com",
+    "project_id": "mysavedrive-75933",
+    "storage_bucket": "mysavedrive-75933.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337923708532:android:6bacb968a85b14042ee321",
+        "android_client_info": {
+          "package_name": "com.example.mysavedrive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337923708532-9fe9mlrc580enqdl37iveailimcl3qj7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mysavedrive",
+            "certificate_hash": "e607b242e9899c97e256e75c5d2e106d54c6bd40"
+          }
+        },
+        {
+          "client_id": "337923708532-d96fet59msoo0830q7gc3n00ai2d2oc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCigNE7V-9dWqkNhxgoOx6YOWjMgJNIxpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337923708532-d96fet59msoo0830q7gc3n00ai2d2oc4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

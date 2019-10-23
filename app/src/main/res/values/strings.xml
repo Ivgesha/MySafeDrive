@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">SafeDrive</string>
+    <string name="title_text">MY SAFE DRIVE</string>
+    <string name="greatful_text">HAVE A NICE DRIVE</string>
+    <string name="get_started_text">GET STARTED</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_text">Login</string>
+    <string name="or_text">Or</string>
+    <string name="create_text">Create Account</string>
+    <string name="username_hint">Username</string>
+    <string name="fullname_hint">Full Name</string>
+    <string name="carModel_hint">Car Model</string>
+    <string name="plateNumber_hint">Plate Number</string>
+    <string name="phoneNumber_hint">Phone Number</string>
+    <string name="post_title" />
+    <string name="thoughts">Event details</string>
+    <string name="save_button">SAVE</string>
+    <string name="title_hint">Title</string>
+    <string name="menu_title">Add Thoug</string>
+    <string name="signout">Signout</string>
+    <string name="SIGNEL_Button">SIGNEL</string>
+    <string name="title_activity_show_user_locaion">Map</string>
+    <string name="SIGNAL_Button">SIGNAL</string>
+    <string name="no_drives_hint">Start a new drive record by clicking the \"+\" icon.</string>
+    <string name="event">Event</string>
+    <string name = "aboutMessage">Hello!\nWelcome to Safe Drive!\nWe are here to track your device and help you when ever you need!</string>
+
+</resources>

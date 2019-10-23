@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/endGColor</color>
+    <color name="colorPrimaryDark">@color/endGColor</color>
+    <color name="colorAccent">#3E2723</color>
+    <color name="yellowBg">#3E2723</color>
+    <color name="endGColor">#297AC2</color>
+    <color name="centerGColor">#60ba5b</color>
+    <color name="startGcolor">#3bb897</color>
+    <color name="buttonColor">#60ba5b</color>
+
+
+    endGColor
+</resources>
