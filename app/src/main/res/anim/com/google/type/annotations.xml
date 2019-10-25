@@ -1,0 +1,5 @@
+<root>
+    <item name='com.google.type.LatLng'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>

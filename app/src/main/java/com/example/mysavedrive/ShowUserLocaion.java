@@ -39,7 +39,6 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
     Location currentLocation;
     private FusedLocationProviderClient fusedLocationClient;
     final Handler handler = new Handler();
-    int count = 0;
     private LocationCallback locationCallback;
 
     //
@@ -86,7 +85,6 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
             public void onSuccess(Location location) {
                 if (location != null) {
                     currentLocation = location;
-                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                             .findFragmentById(R.id.map);
                     mapFragment.getMapAsync(ShowUserLocaion.this);
@@ -120,9 +118,9 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         mMap.addMarker(new MarkerOptions().position(latLng).title("Taxi Driver Here!"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
-        Toast.makeText(getApplicationContext(), "" + latLng, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Your current Location:" + currentLocation.getLatitude()+ "/" + currentLocation.getLongitude(), Toast.LENGTH_LONG).show();
 
-        Log.d("enteredFunc", "" + count++);
+
 
 
 

@@ -35,8 +35,7 @@ import java.util.Objects;
 
 import util.JournalApi;
 
-public class LoginActivity extends AppCompatActivity
-{
+public class LoginActivity extends AppCompatActivity {
 
 
     private ImageView logoIcon;
@@ -57,21 +56,16 @@ public class LoginActivity extends AppCompatActivity
 
     private ProgressBar progressBar;
 
-    private FirebaseFirestore db =FirebaseFirestore.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collectionReference = db.collection("Users");
 
 
-
-
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Animation animation = AnimationUtils.loadAnimation(LoginActivity.this,R.anim.bottomtotop);
+        Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.bottomtotop);
 
         logoIcon = findViewById(R.id.logoIcon);
         emailTextView = findViewById(R.id.email);
@@ -95,28 +89,27 @@ public class LoginActivity extends AppCompatActivity
 
         emailAddres = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        emailAddres.setText("MILLER05488@GMAIL.COM");
-        password.setText("123456");
-
+        
+        // ------------------------------------------- //
+       // emailAddres.setText("MILLER05488@GMAIL.COM");
+      // password.setText("123456");
+        // ------------------------------------------- //
         loginButton = findViewById(R.id.email_sign_in_button);
-        createAcctButton= findViewById(R.id.create_acct_button_login);
+        createAcctButton = findViewById(R.id.create_acct_button_login);
 
-        createAcctButton.setOnClickListener(new View.OnClickListener()
-        {
+
+        // create account Button
+        createAcctButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-
-             startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
             }
         });
 
-
-        loginButton.setOnClickListener(new View.OnClickListener()
-        {
+        // LogIn Button
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
 
                 loginEmailPasswordUser(emailAddres.getText().toString().trim(), password.getText().toString().trim());
 
@@ -127,36 +120,34 @@ public class LoginActivity extends AppCompatActivity
     private void loginEmailPasswordUser(String email, String pwd)//pws = password
     {
         progressBar.setVisibility(View.VISIBLE);
-        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pwd))
-        {
-            firebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>()
-            {
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pwd)) {
+            firebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task)
-                {
-                    FirebaseUser user= firebaseAuth.getCurrentUser();
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
                     assert user != null;
-                    String currentUserId = user.getUid();
+                    if (user== null){
+                        return;
+                    }
+                    progressBar.setVisibility(View.INVISIBLE);
+                        String currentUserId = user.getUid();
 
-                    //Invok the collection from the firebase loop all over the users to find the correct user
-                    collectionReference.whereEqualTo("userId", currentUserId).addSnapshotListener(new EventListener<QuerySnapshot>()
-                    {
+                    //Invoke the collection from the firebase loop all over the users to find the correct user
+                    collectionReference.whereEqualTo("userId", currentUserId).addSnapshotListener(new EventListener<QuerySnapshot>() {
                         @Override
-                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e)
-                        {
-                            if(e != null){
+                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                            if (e != null) {
                             }
                             assert queryDocumentSnapshots != null;
-                            if(!queryDocumentSnapshots.isEmpty())
-                            {
+                            if (!queryDocumentSnapshots.isEmpty()) {
                                 progressBar.setVisibility(View.INVISIBLE);
-                                for(QueryDocumentSnapshot snapshot : queryDocumentSnapshots)
-                                {
+                                for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
                                     JournalApi journalApi = JournalApi.getInstance();
                                     journalApi.setUsername(snapshot.getString("username"));
                                     journalApi.setUserId(snapshot.getString("userId"));
 
                                     //Go to ListActivity
+
                                     startActivity(new Intent(LoginActivity.this, PostJournalActivity.class));
 
                                 }
@@ -167,19 +158,16 @@ public class LoginActivity extends AppCompatActivity
 
                 }
             })
-                    .addOnFailureListener(new OnFailureListener()
-                    {
+                    .addOnFailureListener(new OnFailureListener() {
                         @Override
-                        public void onFailure(@NonNull Exception e)
-                        {
-
-
+                        public void onFailure(@NonNull Exception e) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(), "user not found", Toast.LENGTH_SHORT).show();
+                            return;
                         }
                     });
 
-        }
-        else
-        {
+        } else {
             progressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(LoginActivity.this, "Please enter email and password", Toast.LENGTH_LONG).show();
         }

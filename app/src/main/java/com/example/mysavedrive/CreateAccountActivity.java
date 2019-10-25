@@ -33,6 +33,7 @@ import java.util.Objects;
 import util.JournalApi;
 
 public class CreateAccountActivity extends AppCompatActivity {
+    private int test =0;
     private Button loginButton;
     private Button createAcctButton;
     private FirebaseAuth firebaseAuth;
@@ -190,6 +191,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                                         } else {
                                             progressBar.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(getApplicationContext(),""+ test++,Toast.LENGTH_LONG).show();
 
                                         }
 

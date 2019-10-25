@@ -72,6 +72,9 @@ private RelativeLayout relativeLayout;
         Objects.requireNonNull(getSupportActionBar()).setElevation(0);
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
+
+            // this used after we exited and returned to the app ? ? ? ? ? ? ( i guess )
+
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 currentUser = firebaseAuth.getCurrentUser();
