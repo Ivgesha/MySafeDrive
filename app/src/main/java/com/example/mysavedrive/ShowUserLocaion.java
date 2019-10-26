@@ -110,8 +110,6 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-//         // Add a marker in Sydney and move the camera
-        //  LatLng sydney = new LatLng(-34, 151);
 
 
 
@@ -136,6 +134,7 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
     @Override
     public void onLocationChanged(Location location) {
         fetchLastLocation();
+        onMapReady(mMap);
     }
 
     @Override
