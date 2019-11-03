@@ -10,7 +10,7 @@ public class JournalApi extends Application
     private String userId;
     private static JournalApi instance;
 
-    public static JournalApi getInstance() //creating a new instance API object and return it
+    public static JournalApi getInstance()  //creating a new instance API object and return it
     {
         if(instance ==null)
             instance = new JournalApi();
