@@ -14,9 +14,9 @@ public class Journal {
     private Timestamp timeAdded;
     private String userName;
     private Location location;
-   // private LatLng latLng;
+    // private LatLng latLng;
     private double latitude;
-    private  double longitude;
+    private double longitude;
 
 
     public Journal()//Must for fireStore to work
@@ -33,24 +33,21 @@ public class Journal {
         this.userName = userName;
     }
 
-//    public Location getLocation() {
-//        return location;
-//    }
-
-//    public void setLocation(Location location) {
-//         this.location = location;
-//         this.latitude= location.getLatitude();
-//         this.longitude = location.getLongitude();
-//    }
-
-    public void setLatitude(double latitude){
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    public void setLongitude(double longitude){
+
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
-    public double getLatitude(){return latitude; }
-    public  double getLongitude(){return longitude;}
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
 
     public String getTitle() {
         return title;

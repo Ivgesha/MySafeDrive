@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView gratefulText;
     private TextView about;
     private Button getStartedButton;
-private RelativeLayout relativeLayout;
+    private RelativeLayout relativeLayout;
 
     //Checking if the user login
     private FirebaseAuth firebaseAuth;
@@ -52,7 +52,7 @@ private RelativeLayout relativeLayout;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    logoImage=findViewById(R.id.logoIcon);
+        logoImage = findViewById(R.id.logoIcon);
         title = findViewById(R.id.title);
         gratefulText = findViewById(R.id.gratefulText);
         about = findViewById(R.id.about);
@@ -63,7 +63,7 @@ private RelativeLayout relativeLayout;
 
         logoImage.startAnimation(animation);
         title.startAnimation(animation);
-      //  gratefulText.startAnimation(animation);
+        //  gratefulText.startAnimation(animation);
         about.startAnimation(animation);
         getStartedButton.startAnimation(animation);
         relativeLayout.startAnimation(animation);
@@ -73,7 +73,6 @@ private RelativeLayout relativeLayout;
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
 
-            // this used after we exited and returned to the app ? ? ? ? ? ? ( i guess )
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

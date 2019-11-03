@@ -31,17 +31,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 
-public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallback, LocationListener
-{
+public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
-    //
+
     Location currentLocation;
     private FusedLocationProviderClient fusedLocationClient;
     final Handler handler = new Handler();
     private LocationCallback locationCallback;
 
-    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,25 +50,7 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
 
         fetchLastLocation();
 
-//
-////        final Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                fetchLastLocation();
-//            }
-//        }, 5000);  //the time is in miliseconds
-
-
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        //    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-        //          .findFragmentById(R.id.map);
-        //  mapFragment.getMapAsync(this);
-
-
     }
-    //-------------------------------------------------------------------------------------------------------//
 
 
     private void fetchLastLocation() {
@@ -94,8 +74,6 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
         });
     }
 
-    //-------------------------------------------------------------------------------------------------------//
-
 
     /**
      * Manipulates the map once available.
@@ -110,24 +88,12 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-
-
-
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         mMap.addMarker(new MarkerOptions().position(latLng).title("Taxi Driver Here!"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
-        Toast.makeText(getApplicationContext(), "Your current Location:" + currentLocation.getLatitude()+ "/" + currentLocation.getLongitude(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Your current Location:" + currentLocation.getLatitude() + "/" + currentLocation.getLongitude(), Toast.LENGTH_LONG).show();
 
 
-
-
-
-
-
-
-        //-------------------------------------------------------------------------------------------------------//
-
-        //-------------------------------------------------------------------------------------------------------//
     }
 
 
@@ -139,7 +105,8 @@ public class ShowUserLocaion extends FragmentActivity implements OnMapReadyCallb
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-
+        fetchLastLocation();
+        onMapReady(mMap);
     }
 
     @Override

@@ -191,7 +191,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                                         } else {
                                             progressBar.setVisibility(View.INVISIBLE);
-                                            Toast.makeText(getApplicationContext(),""+ test++,Toast.LENGTH_LONG).show();
+
 
                                         }
 

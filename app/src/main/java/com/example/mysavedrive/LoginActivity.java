@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         orTextView.startAnimation(animation);
         createAccountButton.startAnimation(animation);
 
-        progressBar = findViewById(R.id.login_progress);        //? ? ? why
+        progressBar = findViewById(R.id.login_progress);
 
         firebaseAuth = firebaseAuth.getInstance();
         Objects.requireNonNull(getSupportActionBar()).setElevation(0);
@@ -89,11 +89,8 @@ public class LoginActivity extends AppCompatActivity {
 
         emailAddres = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        
-        // ------------------------------------------- //
-       // emailAddres.setText("MILLER05488@GMAIL.COM");
-      // password.setText("123456");
-        // ------------------------------------------- //
+
+
         loginButton = findViewById(R.id.email_sign_in_button);
         createAcctButton = findViewById(R.id.create_acct_button_login);
 
@@ -126,11 +123,11 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     assert user != null;
-                    if (user== null){
+                    if (user == null) {
                         return;
                     }
                     progressBar.setVisibility(View.INVISIBLE);
-                        String currentUserId = user.getUid();
+                    String currentUserId = user.getUid();
 
                     //Invoke the collection from the firebase loop all over the users to find the correct user
                     collectionReference.whereEqualTo("userId", currentUserId).addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -162,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(), "user not found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Wrong User OR Password ", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     });

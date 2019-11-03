@@ -82,10 +82,10 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_post_journal);
         Objects.requireNonNull(getSupportActionBar()).setElevation(0);
 
-        // ----------------------------------------- //
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
-        // ----------------------------------------- //
+
 
         Animation animation = AnimationUtils.loadAnimation(PostJournalActivity.this, R.anim.lefttoright);
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -96,13 +96,7 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
         currentUserTextView = findViewById(R.id.post_username_textview);
         signalButton = findViewById(R.id.show_map_button);
 
-        //    titleEditText.startAnimation(animation);
-        //    thoughtsEditText.startAnimation(animation);
-        //    currentUserTextView.startAnimation(animation);
-        //      signalButton.startAnimation(animation);
-//        imageView.startAnimation(animation);
-//       saveButton.startAnimation(animation);
-//
+
         signalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -235,7 +229,7 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
                         }
                     });
         } else {
-            Toast.makeText(getApplicationContext(),"Enter title + Description + Image",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Enter title + Description + Image", Toast.LENGTH_LONG).show();
             progressBar.setVisibility(View.INVISIBLE);
         }
 
@@ -286,17 +280,10 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
             public void onSuccess(Location location) {
                 if (location != null) {
                     currentLocation = location;
-                    Log.e("locationTest", "" + currentLocation.getLatitude() + " " + currentLocation.getLongitude());
-
                 } else
                     Toast.makeText(getApplicationContext(), "no Location Found", Toast.LENGTH_SHORT).show();
             }
         });
-
-        //  Log.e("locationTest",""+currentLocation.getLatitude()+ " " + currentLocation.getLongitude());
-        //  com.google.android.gms.maps.model.LatLng latLng = new com.google.android.gms.maps.model.LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        // return latLng;
-
     }
 
 
